@@ -10,13 +10,13 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #faf4ef;
+      --bg: #fffaf2;
       --bg-card: #ffffff;
-      --bg-card2: #f5ede6;
-      --coral: #d4765a;
-      --coral-light: #e89070;
-      --rose: #c47a8e;
-      --rose-light: #d99aaa;
+      --bg-card2: #f9eadb;
+      --coral: #e98432;
+      --coral-light: #f0a055;
+      --rose: #de539e;
+      --rose-light: #ea75b5;
       --text: #2e2016;
       --text-soft: #7a6558;
       --text-muted: #b0998c;
@@ -69,6 +69,16 @@
       line-height: 1.7;
       max-width: 300px;
       margin: 0 auto;
+    }
+
+    .header-subtitle {
+      max-width: 380px;
+      margin: 0 auto;
+      line-height: 1.5;
+      color: #1a1a1a;
+      font-family: 'Heebo', sans-serif;
+      font-weight: 700;
+      font-size: clamp(14px, 3.8vw, 17px);
     }
 
     .divider {
@@ -430,7 +440,7 @@
       <span class="line-coral">מחכה לך</span>
     </h1>
     <div class="divider"></div>
-    <p>ענה על 4 שאלות קצרות<br>ותגלי איך התכשיט שלך יכול להפוך<br>לקמע ועוגן בחיים שלך</p>
+    <p class="header-subtitle">תעני על 4 שאלות קצרות<br>ותגלי איך התכשיט שלך יכול להפוך לקמע ועוגן בחיים שלך</p>
   </header>
 
   <div class="form-container">
