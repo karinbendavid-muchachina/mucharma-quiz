@@ -451,6 +451,51 @@
       margin-top: 10px;
       text-align: center;
     }
+
+    /* ── VERSION SHIFT ── */
+    .version-shift {
+      background: linear-gradient(135deg, #fdf0f6, #fff6ee);
+      border: 1.5px solid rgba(222, 83, 158, 0.18);
+      border-radius: var(--radius);
+      padding: 22px 20px;
+      margin-bottom: 14px;
+      text-align: center;
+    }
+
+    .version-shift p {
+      font-family: 'Rubik', sans-serif;
+      font-size: 14px;
+      color: var(--text-soft);
+      line-height: 1.8;
+      margin-bottom: 6px;
+    }
+
+    .version-shift-punch {
+      font-family: 'Heebo', sans-serif !important;
+      font-weight: 800 !important;
+      font-size: 17px !important;
+      color: var(--rose) !important;
+      margin-top: 10px !important;
+      margin-bottom: 0 !important;
+    }
+
+    /* ── CRYSTAL EXTRA FIELDS ── */
+    .crystal-essence {
+      font-size: 14px;
+      color: var(--rose);
+      font-style: italic;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .crystal-when {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 12px;
+      line-height: 1.6;
+      border-top: 1px solid var(--border-card);
+      padding-top: 10px;
+    }
   </style>
 </head>
 <body>
@@ -528,6 +573,12 @@
     <p class="personal-text" id="personal-text"></p>
   </div>
 
+  <div class="version-shift">
+    <p>כשאת פועלת מתוך המקום שבו את נמצאת — את מחזקת אותו</p>
+    <p>כשאת פועלת מתוך הגרסה שאת רוצה להיות — את הופכת להיות אותה</p>
+    <p class="version-shift-punch">זה לא לדמות. זה לבחור.</p>
+  </div>
+
   <div class="mantra-box">
     <p class="mantra-label">המשמעות של הקמע שלך</p>
     <p class="mantra-sub">בחרי את המשפט שהכי מדבר אלייך היום</p>
@@ -538,11 +589,13 @@
     <p class="card-title">ההמלצה שלנו לקריסטל</p>
     <p class="crystal-rec-note">לא תמיד כל הקריסטלים בדוכן — אז הנה מה שמתאים לאנרגיה שלך</p>
     <p class="crystal-name" id="crystal-name"></p>
+    <p class="crystal-essence" id="crystal-essence"></p>
     <p class="crystal-power" id="crystal-power"></p>
     <div class="crystal-meta">
       <span class="meta-tag" id="crystal-color"></span>
       <span class="meta-tag" id="crystal-chakra"></span>
     </div>
+    <p class="crystal-when" id="crystal-when"></p>
   </div>
 
   <!-- ניוזלייטר -->
@@ -614,9 +667,11 @@
       });
 
       document.getElementById('crystal-name').textContent = data.crystal_name;
+      document.getElementById('crystal-essence').textContent = data.crystal_essence;
       document.getElementById('crystal-power').textContent = data.crystal_power;
       document.getElementById('crystal-color').textContent = '✦ צבע: ' + data.crystal_color;
-      document.getElementById('crystal-chakra').textContent = data.chakra;
+      document.getElementById('crystal-chakra').textContent = '✦ ' + data.crystal_chakra;
+      document.getElementById('crystal-when').textContent = '⏱ מתי לענוד: ' + data.crystal_when;
 
       document.getElementById('loading').style.display = 'none';
       document.getElementById('result').style.display = 'block';
