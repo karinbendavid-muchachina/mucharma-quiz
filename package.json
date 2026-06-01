@@ -1,0 +1,12 @@
+{
+  "name": "mucharma-quiz",
+  "version": "1.0.0",
+  "description": "מוצ'ארם — שאלון הגרסה שלי",
+  "type": "module",
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
