@@ -268,12 +268,36 @@
       margin-bottom: 14px;
     }
 
-    .mantra-text {
-      font-family: 'Rubik', sans-serif;
-      font-size: clamp(20px, 5.5vw, 28px);
-      font-weight: 400;
-      color: var(--coral);
-      line-height: 1.35;
+    .mantra-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    .mantra-options { display: flex; flex-direction: column; gap: 10px; }
+
+    .mantra-option {
+      border: 2px solid var(--rose);
+      border-radius: 12px;
+      padding: 14px 18px;
+      cursor: pointer;
+      font-family: 'Heebo', sans-serif;
+      font-weight: 700;
+      font-size: clamp(15px, 4vw, 18px);
+      color: var(--rose);
+      background: white;
+      transition: all 0.2s;
+      text-align: center;
+    }
+
+    .mantra-option:hover { background: var(--rose); color: white; }
+    .mantra-option.selected { background: var(--rose); color: white; }
+
+    .crystal-rec-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      line-height: 1.5;
     }
 
     .crystal-card {
@@ -505,12 +529,14 @@
   </div>
 
   <div class="mantra-box">
-    <p class="mantra-label">המילה שלך</p>
-    <p class="mantra-text" id="mantra-text"></p>
+    <p class="mantra-label">המשמעות של הקמע שלך</p>
+    <p class="mantra-sub">בחרי את המשפט שהכי מדבר אלייך היום</p>
+    <div class="mantra-options" id="mantra-options"></div>
   </div>
 
   <div class="crystal-card">
-    <p class="card-title">הקריסטל שיתמוך אותך</p>
+    <p class="card-title">ההמלצה שלנו לקריסטל</p>
+    <p class="crystal-rec-note">לא תמיד כל הקריסטלים בדוכן — אז הנה מה שמתאים לאנרגיה שלך</p>
     <p class="crystal-name" id="crystal-name"></p>
     <p class="crystal-power" id="crystal-power"></p>
     <div class="crystal-meta">
@@ -572,10 +598,24 @@
       if (!res.ok) throw new Error(data.error || 'שגיאה');
 
       document.getElementById('personal-text').textContent = data.personal_paragraph;
-      document.getElementById('mantra-text').textContent = data.mantra;
+
+      const mantras = data.mantras || [data.mantra];
+      const optionsEl = document.getElementById('mantra-options');
+      optionsEl.innerHTML = '';
+      mantras.forEach(m => {
+        const btn = document.createElement('button');
+        btn.className = 'mantra-option';
+        btn.textContent = m;
+        btn.onclick = () => {
+          document.querySelectorAll('.mantra-option').forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+        };
+        optionsEl.appendChild(btn);
+      });
+
       document.getElementById('crystal-name').textContent = data.crystal_name;
       document.getElementById('crystal-power').textContent = data.crystal_power;
-      document.getElementById('crystal-color').textContent = '🔮 ' + data.crystal_color;
+      document.getElementById('crystal-color').textContent = '✦ צבע: ' + data.crystal_color;
       document.getElementById('crystal-chakra').textContent = data.chakra;
 
       document.getElementById('loading').style.display = 'none';
