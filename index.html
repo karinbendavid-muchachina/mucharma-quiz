@@ -484,8 +484,16 @@
       font-size: 14px;
       color: var(--rose);
       font-style: italic;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       line-height: 1.5;
+    }
+
+    .crystal-deepening {
+      font-size: 14px;
+      color: var(--text-soft);
+      line-height: 1.85;
+      margin-bottom: 12px;
+      white-space: pre-line;
     }
 
     .crystal-when {
@@ -590,6 +598,7 @@
     <p class="crystal-rec-note">לא תמיד כל הקריסטלים בדוכן — אז הנה מה שמתאים לאנרגיה שלך</p>
     <p class="crystal-name" id="crystal-name"></p>
     <p class="crystal-essence" id="crystal-essence"></p>
+    <p class="crystal-deepening" id="crystal-deepening"></p>
     <p class="crystal-power" id="crystal-power"></p>
     <div class="crystal-meta">
       <span class="meta-tag" id="crystal-color"></span>
@@ -668,6 +677,7 @@
 
       document.getElementById('crystal-name').textContent = data.crystal_name;
       document.getElementById('crystal-essence').textContent = data.crystal_essence;
+      document.getElementById('crystal-deepening').textContent = data.crystal_deepening;
       document.getElementById('crystal-power').textContent = data.crystal_power;
       document.getElementById('crystal-color').textContent = '✦ צבע: ' + data.crystal_color;
       document.getElementById('crystal-chakra').textContent = '✦ ' + data.crystal_chakra;
