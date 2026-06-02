@@ -414,10 +414,12 @@
 
     .newsletter-btn:hover { background: var(--rose-light); }
 
-    .discount-note {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-top: 8px;
+    .guide-title {
+      font-family: 'Heebo', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--coral);
+      margin-bottom: 8px;
     }
 
     .success-msg {
@@ -431,6 +433,21 @@
       color: var(--rose);
       line-height: 1.65;
     }
+
+    #guide-download-btn {
+      display: block;
+      margin-top: 14px;
+      background: var(--rose);
+      color: white;
+      border-radius: var(--radius);
+      padding: 12px 20px;
+      font-family: 'Rubik', sans-serif;
+      font-size: 16px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    #guide-download-btn:hover { background: var(--rose-light); }
 
     .footer {
       text-align: center;
@@ -621,21 +638,24 @@
 
   <!-- ניוזלייטר -->
   <div class="newsletter-section">
-    <div class="sparkle">✨</div>
-    <h3>שווה להיות חברה של מוצ׳אצ׳ינה</h3>
-    <p class="sub">הצטרפי לניוזלייטר וקבלי 10% הנחה לקנייה הבאה</p>
-    <p class="flirt">אם אהבת... תדעי שהרומן בינינו לא חייב להיגמר כאן</p>
+    <div class="sparkle">🎁</div>
+    <h3>יש לנו מתנה בשבילך</h3>
+    <p class="guide-title">המדריך החינמי — "לחיות את הגרסה שלי"</p>
+    <p class="sub">איך להתחבר לאישה שאת כבר יודעת שאת<br>ולהביא אותה אל היומיום שלך</p>
+    <p class="flirt">הצטרפי למשפחה שלנו וקבלי את המדריך ישירות</p>
 
     <input type="email" class="newsletter-input" id="email-input" placeholder="האימייל שלך" dir="ltr">
     <input type="text" class="newsletter-input" id="name-input" placeholder="השם שלך">
     <button class="newsletter-btn" onclick="submitNewsletter()">
-      אני בפנים ✦ שלחי לי את ה-10%
+      שלחי לי את המדריך ✦
     </button>
-    <p class="discount-note">שימוש חד פעמי | אין כפל מבצעים</p>
 
     <div class="success-msg" id="success-msg">
       ברוכה הבאה למשפחה 🤍<br>
-      קוד ההנחה בדרך אלייך
+      <span style="font-size:13px; opacity:0.8;">המדריך מוכן בשבילך</span>
+      <a id="guide-download-btn" href="#" target="_blank" rel="noopener" style="display:none;">
+        הורידי את המדריך ✦
+      </a>
     </div>
   </div>
 
@@ -643,6 +663,9 @@
 </div>
 
 <script>
+  // ← קארין: כשהמדריך מוכן, הכניסי כאן את הלינק של גוגל דרייב
+  const GUIDE_URL = '';
+
   async function submitForm() {
     const q1 = document.getElementById('q1').value.trim();
     const q2 = document.getElementById('q2').value.trim();
@@ -730,8 +753,12 @@
     document.getElementById('email-input').style.display = 'none';
     document.getElementById('name-input').style.display = 'none';
     document.querySelector('.newsletter-btn').style.display = 'none';
-    document.querySelector('.discount-note').style.display = 'none';
     document.getElementById('success-msg').style.display = 'block';
+    if (GUIDE_URL) {
+      const btn = document.getElementById('guide-download-btn');
+      btn.href = GUIDE_URL;
+      btn.style.display = 'block';
+    }
   }
 </script>
 </body>
