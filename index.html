@@ -94,11 +94,18 @@
     .form-container {
       max-width: 480px;
       margin: 0 auto;
-      padding: 32px 20px 60px;
+      padding: 24px 20px 60px;
+      counter-reset: question;
     }
 
     .question-block {
-      margin-bottom: 28px;
+      background: white;
+      border: 1.5px solid var(--border-card);
+      border-radius: var(--radius);
+      padding: 18px 18px 16px;
+      margin-bottom: 12px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+      counter-increment: question;
       animation: fadeUp 0.45s ease both;
     }
 
@@ -113,25 +120,45 @@
     }
 
     .q-label {
-      display: block;
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
       font-family: 'Rubik', sans-serif;
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 500;
       color: var(--text);
-      margin-bottom: 7px;
-      line-height: 1.45;
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    .q-label::before {
+      content: counter(question);
+      min-width: 26px;
+      height: 26px;
+      background: var(--rose);
+      color: white;
+      border-radius: 50%;
+      font-family: 'Heebo', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      line-height: 26px;
+      text-align: center;
+      display: block;
+      flex-shrink: 0;
+      margin-top: 1px;
     }
 
     .q-hint {
       font-size: 13px;
       color: var(--text-muted);
       margin-bottom: 10px;
-      line-height: 1.55;
+      padding-right: 37px;
+      line-height: 1.6;
     }
 
     textarea {
       width: 100%;
-      background: var(--bg-card);
+      background: var(--bg);
       border: 1.5px solid var(--border-card);
       border-radius: var(--radius);
       color: var(--text);
